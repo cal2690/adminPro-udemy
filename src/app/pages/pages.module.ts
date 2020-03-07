@@ -1,4 +1,7 @@
-import { NgModule } from "@angular/core";
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from "@angular/forms";
+import { ChartsModule } from 'ng2-charts';
 
 // Routes
 import { PAGES_ROUTES } from './pages.routes';
@@ -11,6 +14,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProgressComponent } from './progress/progress.component';
 import { Graficas1Component } from './graficas1/graficas1.component';
 import { PagesComponent } from './pages.component';
+import { IncrementComponent } from '../components/increment/increment.component';
+import { DoughnutchartComponent } from '../components/doughnutchart/doughnutchart.component';
 
 
 @NgModule({
@@ -18,16 +23,23 @@ import { PagesComponent } from './pages.component';
         DashboardComponent,
         ProgressComponent,
         Graficas1Component,
-        PagesComponent
+        PagesComponent,
+        IncrementComponent,
+        DoughnutchartComponent
     ],
     exports: [
         DashboardComponent,
         ProgressComponent,
-        PagesComponent
+        PagesComponent,
+        IncrementComponent,
+        DoughnutchartComponent
     ],
     imports: [
+        BrowserModule,
         SharedModule,
-        PAGES_ROUTES
+        PAGES_ROUTES,
+        FormsModule,
+        ChartsModule
     ]
 })
 
