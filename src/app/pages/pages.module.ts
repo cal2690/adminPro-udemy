@@ -16,6 +16,7 @@ import { Graficas1Component } from './graficas1/graficas1.component';
 import { PagesComponent } from './pages.component';
 import { IncrementComponent } from '../components/increment/increment.component';
 import { DoughnutchartComponent } from '../components/doughnutchart/doughnutchart.component';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { DoughnutchartComponent } from '../components/doughnutchart/doughnutchar
         Graficas1Component,
         PagesComponent,
         IncrementComponent,
-        DoughnutchartComponent
+        DoughnutchartComponent,
+        AccountSettingsComponent
     ],
     exports: [
         DashboardComponent,
