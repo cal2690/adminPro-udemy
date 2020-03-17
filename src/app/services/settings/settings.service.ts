@@ -27,7 +27,6 @@ export class SettingsService {
   }
 
   setTheme(theme: string) {
-    console.log(theme);
     let url = `assets/css/colors/${theme}.css`;
     this._document.getElementById('theme').setAttribute('href', url);
 

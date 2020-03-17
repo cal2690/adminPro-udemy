@@ -1,3 +1,4 @@
-#themecolors li {
+#themecolors li,
+.pointer {
     cursor: pointer;
 }
