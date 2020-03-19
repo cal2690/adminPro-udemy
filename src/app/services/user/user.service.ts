@@ -76,7 +76,10 @@ export class UserService {
     url+= '?token=' + this.token;
     return this.http.put(url, user)
     .map((result: any) => {
-      this.saveStorage(result.resultSave._id, this.token, result.resultSave);
+      if(user._id === this.user._id) {
+        this.saveStorage(result.resultSave._id, this.token, result.resultSave);
+      }
+      
       alert('Usuario actualizado');
       return true;
     })
@@ -94,7 +97,7 @@ export class UserService {
   changeFile(file: File, id: string) {
 
     this._uploadFile.uploadFile(file, 'users', id)
-    .then(result => {
+    .then((result: any) => {
       this.user.image = result.resultUpload.image;
       alert('Imagen actualizada');
       this.saveStorage(id, this.token, result.resultUpload);
@@ -104,4 +107,25 @@ export class UserService {
     })
   }
 
+  readUser(from: number = 0) {
+    let url = URL_SERVICE + '/user?from=' + from;
+    return this.http.get(url);
+  }
+
+  searchUser(term: string) {
+    let url = URL_SERVICE + '/search/collection/user/' + term;
+    return this.http.get(url)
+    .map((result: any) => result.result);
+  }
+
+  deleteUser(id: string) {
+    let url = URL_SERVICE + '/user/' + id;
+    url += '?token=' + this.token;
+
+    return this.http.delete(url)
+    .map(result => {
+      alert('Usuario borrado');
+      return true;
+    });
+  }
 }
