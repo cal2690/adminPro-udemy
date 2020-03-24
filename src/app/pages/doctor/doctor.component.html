@@ -1,0 +1,40 @@
+<div class="row animated fadeIn">
+    <div class="col-md-6">
+        <div class="card card-body">
+            <h3 class="box-title m-b-0">Médico: {{doctor.name}}</h3> <br>
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <form #form="ngForm" ngNativeValidate (ngSubmit)="saveDoctor(form)">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nombre del medico</label>
+                            <input [(ngModel)]="doctor.name" name="name" type="text" class="form-control" placeholder="Nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Hospital</label>
+                            <select (change)="changeHospital($event.target.value)" [(ngModel)]="doctor.hospital" name="hospital" class="form-control" required>
+                                <option value="">Seleccione un hospital</option>
+                                <option *ngFor="let element of hospitals" [value]="element._id">{{element.name}}</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10 fa fa-save"> Guardar</button>
+                        <a routerLink="/doctors" class="btn btn-inverse waves-effect waves-light fa fa-sign-out"> Volver a medicos</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 animated fadeIn">
+        <div class="card card-body">
+            <h4 class="box-title m-b-0">NOMBRE DEL HOSPITAL</h4>
+            <img [src]="hospital.image | image:'hospitals'" alt="" width="100%" class="pointer">
+        </div>
+    </div>
+
+    <div class="col-md-3 animated fadeIn" *ngIf="doctor._id">
+        <div class="card card-body">
+            <h3 class="box-title m-b-0">FOTOGRAFIA</h3>
+            <img (click)="changePhoto()" [src]="doctor.image | image:'doctors'" alt="" width="150px" class="pointer">
+        </div>
+    </div>
+</div>
