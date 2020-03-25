@@ -12,6 +12,8 @@ import { UsersComponent } from './users/users.component';
 import { HospitalComponent } from './hospital/hospital.component';
 import { DoctorComponent } from './doctor/doctor.component';
 import { DoctorsComponent } from './doctors/doctors.component';
+import { SearchComponent } from './search/search.component';
+import { AdminGuard } from '../services/service.index';
 
 const pagesRoutes: Routes = [
     { 
@@ -27,10 +29,20 @@ const pagesRoutes: Routes = [
             { path: 'account-settings', component: AccountSettingsComponent, data:{title: 'Account settings'} },
             { path: 'profile', component: ProfileComponent, data:{title: 'Profile'} },
             // Mantenimiento
-            { path: 'users', component: UsersComponent, data:{title: 'Mantenimiento de usuarios'} },
+            { 
+                path: 'users', 
+                component: UsersComponent, 
+                canActivate: [
+                    AdminGuard
+                ],
+                data:{
+                    title: 'Mantenimiento de usuarios'
+                }    
+            },
             { path: 'hospitals', component: HospitalComponent, data:{title: 'Mantenimiento de hospitales'} },
             { path: 'doctors', component: DoctorsComponent, data:{title: 'Mantenimiento de médicos'} },
             { path: 'doctor/:id', component: DoctorComponent, data:{title: 'Mantenimiento de médico'} },
+            { path: 'search/:term', component: SearchComponent, data:{title: 'Busqueda'} },
             { path: '', redirectTo: '/dashboard', pathMatch: 'full', data:{title: '404'}}
         ]
     }    

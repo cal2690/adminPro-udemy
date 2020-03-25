@@ -6,4 +6,4 @@ export { LoginGuardGuard } from './guards/login-guard.guard';
 export { UploadFileService } from './upload-file/upload-file.service';
 export { HospitalService } from './hospital/hospital.service';
 export { DoctorService } from './doctor/doctor.service';
-
+export { AdminGuard } from './guards/admin.guard';
